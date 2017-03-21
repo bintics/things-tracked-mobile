@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "912699957798",
+    "firebase_url": "https://traking-suit.firebaseio.com",
+    "project_id": "traking-suit",
+    "storage_bucket": "traking-suit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912699957798:android:583582755deeeb34",
+        "android_client_info": {
+          "package_name": "com.bintics.tracked"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912699957798-28q5ihid6esgt2tohdh4gs3d9h0v2vld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc2KB3RX7RgoZvSsesDWtb6oDaQ1EUd9g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
