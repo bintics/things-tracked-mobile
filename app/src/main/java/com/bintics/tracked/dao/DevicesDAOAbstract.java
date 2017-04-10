@@ -1,7 +1,9 @@
-package com.bintics.tracked.data;
+package com.bintics.tracked.dao;
 
 import com.bintics.tracked.bean.Coord;
 import com.bintics.tracked.bean.Device;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -9,28 +11,29 @@ import java.util.List;
  * Created by federico on 08/04/2017.
  */
 
-public class DevicesDAOAbstract implements IDevicesDAO {
+public abstract class DevicesDAOAbstract implements IDevicesDAO {
 
     // final String URL_DATA_ROOT = "clients/pgj/locates/locatecdmx/devices/device1";
-    final String URL_DATA_ROOT = "clients/{client}/locates/{locateService}/devices/{deviceId}";
+    private final String URL_DATA_ROOT;
+    private DatabaseReference reference;
 
-    @Override
-    public void saveDevice(Device device) {
+    public DevicesDAOAbstract(String clientName, String locationName) {
+        String url = "clients/{client}/locates/{locateService}/devices";
+        URL_DATA_ROOT = url
+                .replace("{client}",clientName)
+                .replace("{locateService}",locationName);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        reference = database.getReference(URL_DATA_ROOT);
     }
 
     @Override
-    public void updateLocation(Coord coord) {
-
+    public DatabaseReference getReference() {
+        return reference;
     }
 
     @Override
-    public List<Device> getAllDevices() {
-        return null;
-    }
-
-    @Override
-    public Device getDevice(String deviceName) {
-        return null;
+    public String getRootStorage() {
+        return URL_DATA_ROOT;
     }
 }

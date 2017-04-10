@@ -1,4 +1,4 @@
-package com.bintics.tracked.data;
+package com.bintics.tracked.dao;
 
 import com.bintics.tracked.bean.Device;
 import com.google.firebase.database.DataSnapshot;

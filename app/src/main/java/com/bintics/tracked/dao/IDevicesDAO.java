@@ -1,7 +1,9 @@
-package com.bintics.tracked.data;
+package com.bintics.tracked.dao;
 
 import com.bintics.tracked.bean.Coord;
 import com.bintics.tracked.bean.Device;
+import com.bintics.tracked.service.IDevicesService;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
@@ -17,6 +19,11 @@ public interface IDevicesDAO {
 
     List<Device> getAllDevices();
 
-    Device getDevice(String deviceName);
+    String getRootStorage();
 
+    DatabaseReference getReference();
+
+    void addListener(String deviceName, IDevicesService.DevicesListener devicesListener);
+
+    void update(Device device);
 }

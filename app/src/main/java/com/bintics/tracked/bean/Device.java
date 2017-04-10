@@ -5,23 +5,25 @@ package com.bintics.tracked.bean;
  */
 
 public class Device {
+
     private String name;
-    private double latitude;
-    private double longitude;
-    private String label;
-    private boolean conected;
-    private String uid;
+    private boolean connected;
+    private Coord coords;
 
     public Device() {
     }
 
     public Device(String uid, String name, double latitude, double longitude, String label, boolean conected) {
         this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.label = label;
-        this.conected = conected;
-        this.uid = uid;
+        this.connected = conected;
+    }
+
+    public Coord getCords() {
+        return coords;
+    }
+
+    public void setCords(Coord coords) {
+        this.coords = coords;
     }
 
     public String getName() {
@@ -32,43 +34,12 @@ public class Device {
         this.name = name;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public boolean getConnected() {
+        return connected;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setConnected(boolean connected) {
+        this.connected = connected;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public boolean isConected() {
-        return conected;
-    }
-
-    public void setConected(boolean conected) {
-        this.conected = conected;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 }
