@@ -41,6 +41,15 @@
             android:hint="@string/name_device"
             android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/txtCords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:hint="Cords"
+            android:inputType="textPersonName" />
+
         <Switch
             android:id="@+id/status_device"
             android:layout_width="match_parent"
@@ -51,7 +60,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="126dp"
             android:orientation="horizontal">
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ftngSaveSettingsDevice"

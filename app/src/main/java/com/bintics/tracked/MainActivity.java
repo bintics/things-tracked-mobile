@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch swStatus;
     private IDevicesService deviceService;
     private Device device;
+    private EditText txtCords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_PERMISSON_LOCATION_STATE:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Toast.makeText(this, "Permiso concedido!", Toast.LENGTH_LONG).show();
                     startLocation();
                 }
                 break;
@@ -102,12 +102,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLocationChanged(Location location) {
-                String msg = "Latitud:{0} Longitud:{1}".replace("{0}",String.valueOf(location.getLatitude())).replace("{1}", String.valueOf(location.getLongitude()));
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-
                 Coord cords = MainActivity.this.device.getCords();
                 cords.setLat(location.getLatitude());
                 cords.setLng(location.getLongitude());
+                MainActivity.this.updateView(MainActivity.this.device);
                 deviceService.update(MainActivity.this.device);
             }
 
@@ -126,13 +124,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, TIME, 0, lListener);
-        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, TIME, 0, lListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, TIME, 1, lListener);
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, TIME, 1, lListener);
+    }
+
+    private void updateView(Device device) {
+        Coord coord = device.getCords();
+        String msg = "lat:{0} lng:{1}".replace("{0}",String.valueOf(coord.getLat())).replace("{1}", String.valueOf(coord.getLng()));
+        txtCords.setText(msg);
     }
 
     private void initializeComponents() {
         txtLabel = (EditText) findViewById(R.id.txtLabelDevice);
         txtName = (EditText) findViewById(R.id.txtNameDevice);
+        txtCords = (EditText) findViewById(R.id.txtCords);
         swStatus = (Switch) findViewById(R.id.status_device);
     }
 }
