@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Tracked</string>
-    <string name="name_device">Nombre</string>
-    <string name="disabled">Disponible</string>
-    <string name="label">Etiqueta</string>
-    <string name="settings_device">Configuracion del dispositivo</string>
-    <string name="settings_file_app">settingsapp</string>
-    <string name="uid_device">uid_device</string>
-</resources>
